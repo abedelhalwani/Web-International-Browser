@@ -1,19 +1,275 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Download Web International Browser</title>
+  <meta name="google-site-verification" content="sCY_QQFbT-sWlrYKMBRzExib3Ep1h4M0PVhpE90BOuI">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06133d">
+  <meta name="description" content="Discover Web International Browser, a free Windows browser with tabbed browsing and a custom blue dashboard. Download the Windows app.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abedelhalwani.github.io/Web-International-Browser/">
+  <meta property="og:title" content="Web International Browser">
+  <meta property="og:description" content="A free Windows browser with tabbed browsing and a custom blue dashboard.">
+  <meta property="og:url" content="https://abedelhalwani.github.io/Web-International-Browser/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Web International Browser</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #f5f8ff;
+      background: #030a20;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 34px 20px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at 50% 45%, #087dff45 0, transparent 56%),
+        linear-gradient(145deg, #020817, #071638 55%, #020817);
+    }
+    a { color: inherit; }
+    .dashboard {
+      width: min(1120px, 100%);
+      padding: 22px clamp(18px, 4vw, 48px) 18px;
+      border: 1px solid #168dff;
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at 28% 100%, #008bff52, transparent 48%),
+        linear-gradient(140deg, #071943, #063b91 55%, #061b51);
+      box-shadow: 0 0 18px #0785ff9c, 0 0 70px #087eff5c, inset 0 0 48px #0642a566;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 700px;
+      margin: 0 auto;
+      border-bottom: 1px solid #8ccaff38;
+    }
+    .feature {
+      min-height: 58px;
+      padding: 5px 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: #e8f5ff;
+      text-align: center;
+      font-size: 13px;
+    }
+    .feature + .feature { border-left: 1px solid #8ccaff38; }
+    .feature-icon { color: #49e5ff; font-size: 22px; }
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 235px;
+      gap: clamp(18px, 4vw, 42px);
+      max-width: 940px;
+      margin: 26px auto 0;
+    }
+    .content { min-width: 0; }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 14px; }
+    .logo {
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 2px solid #20dfff;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1;
+      text-shadow: 0 0 14px #41eaff;
+      box-shadow: 0 0 24px #00abff, inset 0 0 18px #00aaff78;
+    }
+    h1 { margin: 0; text-align: center; font-size: clamp(25px, 4.4vw, 43px); line-height: 1; letter-spacing: -.05em; }
+    h1 span { color: #38dbff; }
+    .tagline { margin: 9px 0 0; color: #d3e8ff; text-align: center; font-size: 14px; }
+    .search {
+      height: 48px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 24px 0 20px;
+      padding: 5px 6px 5px 17px;
+      border: 1px solid #c1e4ff;
+      border-radius: 28px;
+      background: #f8fbff;
+      box-shadow: 0 0 22px #00bfff8a;
+    }
+    .search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: #102645; font: inherit; font-size: 14px; }
+    .search input::placeholder { color: #70819b; }
+    .search button {
+      padding: 9px 17px;
+      border: 0;
+      border-radius: 22px;
+      background: linear-gradient(100deg, #0879ff, #0bc4ff);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .shortcuts {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(64px, 1fr));
+      gap: 9px;
+    }
+    .shortcut {
+      min-height: 67px;
+      padding: 8px 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #77baff70;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #ffffff1b, #041b51a8);
+      color: #f4f8ff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 11px;
+      transition: transform .15s, background .15s, box-shadow .15s;
+    }
+    .shortcut:hover { transform: translateY(-2px); background: #158bff55; box-shadow: 0 0 15px #00aaff55; }
+    .shortcut b { color: #8ceeff; font-size: 22px; line-height: 1; }
+    .assistant {
+      min-height: 100%;
+      padding: 16px;
+      border: 1px solid #58baff;
+      border-radius: 13px;
+      background: linear-gradient(160deg, #062258eF, #031439f5);
+      box-shadow: 0 0 20px #007bff40, inset 0 0 24px #0e54a72e;
+    }
+    .assistant-title { display: flex; align-items: center; gap: 8px; color: #a4efff; font-size: 15px; font-weight: 800; }
+    .online { margin: 7px 0 14px; color: #58f5ad; font-size: 11px; }
+    .hello { margin: 0 0 12px; color: #e3efff; font-size: 12px; line-height: 1.55; }
+    .assistant-list { margin: 0; padding: 0; list-style: none; }
+    .assistant-list li { margin: 8px 0; color: #d4e7ff; font-size: 11px; }
+    .assistant-list li::before { content: "◉"; margin-right: 7px; color: #36dcff; }
+    .chat-box { margin-top: 16px; padding: 9px 10px; border: 1px solid #5498df77; border-radius: 18px; color: #97afd0; font-size: 10px; }
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 19px;
+      padding-top: 14px;
+      border-top: 1px solid #9ed5ff38;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px 15px; color: #eff8ff; font-size: 11px; }
+    .badges span::before { content: "✓"; margin-right: 5px; color: #52ffaf; font-weight: 900; }
+    .download {
+      flex: 0 0 auto;
+      padding: 11px 17px;
+      border-radius: 24px;
+      background: linear-gradient(100deg, #0879ff, #08c5ff);
+      box-shadow: 0 0 18px #00aaff70;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .download:hover { filter: brightness(1.13); }
+    .note { margin: 12px 0 0; color: #b6d2f3; text-align: center; font-size: 11px; }
+    @media (max-width: 700px) {
+      body { padding: 16px 10px; }
+      .dashboard { padding: 16px 14px; }
+      .main-grid { grid-template-columns: 1fr; }
+      .assistant { display: none; }
+      .shortcuts { grid-template-columns: repeat(4, minmax(55px, 1fr)); gap: 7px; }
+      .bottom { align-items: stretch; flex-direction: column; }
+      .download { align-self: center; }
+      .feature { flex-direction: column; gap: 4px; font-size: 10px; }
+      .feature-icon { font-size: 20px; }
+      .logo { width: 52px; height: 52px; font-size: 36px; }
+    }
+    @media (max-width: 380px) {
+      .shortcuts { grid-template-columns: repeat(3, minmax(55px, 1fr)); }
+      .brand { gap: 9px; }
+    }
+  </style>
 </head>
-<body style="font-family: Segoe UI, Arial, sans-serif;">
-<div style="text-align: center; margin-top: 50px;">
-    <h1>Download Web International Browser</h1>
-    <p>Experience fast, secure, and modern browsing with custom tab management.</p>
+<body>
+  <main class="dashboard">
+    <nav class="features" aria-label="Browser features">
+      <div class="feature"><span class="feature-icon">◎</span><span>Web browsing</span></div>
+      <div class="feature"><span class="feature-icon">⌕</span><span>Search</span></div>
+      <div class="feature"><span class="feature-icon">▣</span><span>Windows app</span></div>
+      <div class="feature"><span class="feature-icon">♙</span><span>WebView2 engine</span></div>
+    </nav>
 
-    <a href="WebInternationalBrowser.zip" download style="background-color: #0070f3; color: white; padding: 15px 30px; text-decoration: none; font-size: 18px; border-radius: 5px; display: inline-block; font-weight: bold;">
-        Download for Windows (ZIP)
-    </a>
-    <p>Extract the ZIP file, then open WebInternationalBrowser.exe.</p>
-</div>
+    <div class="main-grid">
+      <section class="content">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">W</div>
+          <div>
+            <h1>Web International<br><span>Browser</span></h1>
+            <p class="tagline">Browse · Create · Explore</p>
+          </div>
+        </div>
+
+        <form class="search" action="https://www.bing.com/search" method="get">
+          <input name="q" aria-label="Search the web" placeholder="Search the web or ask AI">
+          <button type="submit">Search</button>
+        </form>
+
+        <nav class="shortcuts" aria-label="Favorite websites">
+          <a class="shortcut" href="https://www.bing.com"><b>🌐</b>Web</a>
+          <a class="shortcut" href="https://www.youtube.com"><b>▶</b>YouTube</a>
+          <a class="shortcut" href="https://play.google.com"><b>▣</b>Store</a>
+          <a class="shortcut" href="https://www.bing.com/search?q=apps"><b>▦</b>Apps</a>
+          <a class="shortcut" href="https://drive.google.com"><b>☁</b>Cloud</a>
+          <a class="shortcut" href="https://www.bing.com/search?q=weather"><b>☀</b>Weather</a>
+          <a class="shortcut" href="https://www.bing.com/news"><b>▤</b>News</a>
+          <a class="shortcut" href="https://www.bing.com/maps"><b>⌖</b>Maps</a>
+          <a class="shortcut" href="https://outlook.live.com"><b>✉</b>Email</a>
+          <a class="shortcut" href="https://translate.google.com"><b>文</b>Translate</a>
+          <a class="shortcut" href="https://calendar.google.com"><b>▣</b>Calendar</a>
+          <a class="shortcut" href="https://music.youtube.com"><b>♫</b>Music</a>
+          <a class="shortcut" href="https://www.bing.com/search?q=sports"><b>⚽</b>Sports</a>
+          <a class="shortcut" href="https://www.bing.com/search?q=finance"><b>▥</b>Finance</a>
+          <a class="shortcut" href="https://www.wikipedia.org"><b>W</b>Wikipedia</a>
+          <a class="shortcut" href="https://www.khanacademy.org"><b>♜</b>Learning</a>
+          <a class="shortcut" href="https://www.bing.com/travel"><b>✈</b>Travel</a>
+          <a class="shortcut" href="https://stellarium-web.org"><b>★</b>Sky</a>
+          <a class="shortcut" href="https://www.crazygames.com"><b>🎮</b>Games</a>
+          <a class="shortcut" href="https://malmo.se"><b>🏙</b>Malmö Stad</a>
+        </nav>
+      </section>
+
+      <aside class="assistant">
+        <div class="assistant-title"><span>🤖</span> AI Assistant</div>
+        <div class="online">● Preview · AI setup required</div>
+        <p class="hello">AI Assistant preview<br>Connect an AI service before using chat features.</p>
+        <ul class="assistant-list">
+          <li>Chat with me</li>
+          <li>Write code</li>
+          <li>Analyze images</li>
+          <li>Search the web</li>
+          <li>Voice assistant</li>
+        </ul>
+        <div class="chat-box">AI chat setup required</div>
+      </aside>
+    </div>
+
+    <div class="bottom">
+      <div class="badges">
+        <span>Tabbed browsing</span>
+        <span>Windows app</span>
+        <span>WebView2 engine</span>
+        <span>Free download</span>
+      </div>
+      <a class="download" href="WebInternationalBrowser-Windows.zip" download>↓ &nbsp; Download Now</a>
+    </div>
+    <p class="note">Windows app ZIP · Extract the files and open WebInternationalBrowser.exe · WebView2 Runtime required</p>
+  </main>
 </body>
 </html>
