@@ -23,7 +23,8 @@ constexpr int kGoW = 60;
 constexpr int kFontPx = 22;
 HFONT g_font;
 constexpr int kCompactWidth = 600;
-constexpr wchar_t kHome[] = L"https://www.bing.com";
+constexpr wchar_t kStartupPage[] = L"https://www.google.com";
+constexpr wchar_t kNewTabPage[] = L"https://www.bing.com";
 
 HWND g_back, g_fwd, g_refresh, g_addr, g_go, g_new, g_close, g_tabs;
 std::unique_ptr<TabManager> g_manager;
@@ -104,7 +105,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
         cb.onUrlChanged = [](const std::wstring& u) { SetWindowTextW(g_addr, u.c_str()); };
         g_manager = std::make_unique<TabManager>(hwnd, cb);
         g_manager->Initialize();
-        g_manager->CreateTab(kHome);
+        g_manager->CreateTab(kStartupPage);
         Layout(hwnd);
         return 0;
     }
@@ -120,7 +121,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp) {
         case ID_FORWARD: g_manager->GoForward(); break;
         case ID_REFRESH: g_manager->Reload(); break;
         case ID_GO: Go(); break;
-        case ID_NEWTAB: g_manager->CreateTab(kHome); break;
+        case ID_NEWTAB: g_manager->CreateTab(kNewTabPage); break;
         case ID_CLOSETAB: g_manager->CloseTab(g_manager->ActiveId()); break;
         }
         return 0;
